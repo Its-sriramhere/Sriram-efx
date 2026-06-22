@@ -1,0 +1,53 @@
+.border-glow {
+  position: relative;
+  --glow-opacity: 0;
+  --glow-intensity: 0;
+}
+
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(0, 240, 255, 0.6),
+    rgba(139, 92, 246, 0.3) 40%,
+    transparent 70%
+  );
+  opacity: var(--glow-intensity, 0);
+  transition: opacity 0.3s ease;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.border-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(0, 240, 255, 0.15),
+    transparent 60%
+  );
+  opacity: calc(var(--glow-intensity, 0) * 0.5);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .border-glow::before,
+  .border-glow::after {
+    display: none;
+  }
+
+  .border-glow {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}

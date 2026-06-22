@@ -1,0 +1,122 @@
+.testimonials {
+  background: var(--color-bg-alt);
+}
+
+.testimonial-card {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonial-content {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.testimonial-quote {
+  margin: 0 auto var(--spacing-lg);
+  display: block;
+  color: var(--color-accent-cyan);
+}
+
+.testimonial-text {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-bg);
+}
+
+.testimonial-name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.testimonial-role {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: left;
+}
+
+.testimonial-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.testimonial-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.testimonial-arrow:hover {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.testimonial-dots {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+  border: none;
+  padding: 0;
+  transition: var(--transition-fast);
+}
+
+.dot.active {
+  background: var(--color-accent-cyan);
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .testimonial-content {
+    padding: var(--spacing-xl);
+  }
+
+  .testimonial-text {
+    font-size: var(--font-size-base);
+  }
+}

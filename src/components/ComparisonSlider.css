@@ -1,0 +1,117 @@
+.comparison-slider {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 320px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.comparison-slider:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+.comparison-before,
+.comparison-after {
+  position: absolute;
+  inset: 0;
+}
+
+.comparison-gradient {
+  position: absolute;
+  inset: 0;
+}
+
+.comparison-gradient.dull {
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a, #3a3a3a);
+  filter: grayscale(0.8) contrast(0.7) brightness(0.6);
+}
+
+.comparison-gradient.vibrant {
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483);
+  filter: contrast(1.2) saturate(1.3) brightness(1.1);
+}
+
+.comparison-gradient.vibrant::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(0, 240, 255, 0.15), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.12), transparent 50%);
+}
+
+.comparison-label {
+  position: absolute;
+  bottom: var(--spacing-md);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(8px);
+}
+
+.comparison-label.before {
+  left: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-text-muted);
+}
+
+.comparison-label.after {
+  right: var(--spacing-md);
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--color-accent-cyan);
+}
+
+.comparison-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+.comparison-slider.dragging .comparison-handle {
+  background: var(--color-accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.handle-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  transition: var(--transition-fast);
+}
+
+.comparison-slider.dragging .handle-circle {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--color-accent-cyan);
+  color: var(--color-bg);
+}
+
+@media (max-width: 600px) {
+  .comparison-slider {
+    height: 240px;
+  }
+}

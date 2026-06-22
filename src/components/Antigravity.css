@@ -1,0 +1,19 @@
+.antigravity {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) 0;
+}
+
+.antigravity-item {
+  position: relative;
+  will-change: transform;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .antigravity-item {
+    transform: none !important;
+  }
+}
