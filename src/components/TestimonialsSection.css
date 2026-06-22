@@ -119,4 +119,9 @@
   .testimonial-text {
     font-size: var(--font-size-base);
   }
+
+  .testimonial-arrow {
+    width: 44px;
+    height: 44px;
+  }
 }

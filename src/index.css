@@ -68,6 +68,7 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
   cursor: none;
 }
@@ -116,9 +117,27 @@ input, textarea, select {
   padding: 0 var(--spacing-xl);
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
 .section {
   padding: var(--spacing-4xl) 0;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-2xl) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
 }
 
 .section-label {
@@ -151,10 +170,29 @@ input, textarea, select {
   background-clip: text;
 }
 
+@media (max-width: 768px) {
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
 .section-subtitle {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
   max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .section-subtitle {
+    font-size: var(--font-size-base);
+    max-width: 100%;
+  }
 }
 
 .gradient-text {

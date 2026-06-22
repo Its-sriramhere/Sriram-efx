@@ -205,6 +205,9 @@
 }
 
 @media (max-width: 480px) {
+  .hero {
+    min-height: 100dvh;
+  }
   .hero-title {
     font-size: var(--font-size-3xl);
   }
@@ -218,5 +221,21 @@
   .hero-profile .tilted-card-img {
     width: 100px !important;
     height: 100px !important;
+  }
+  .hero-scroll {
+    display: none;
+  }
+}
+
+@media (max-height: 600px) {
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+  .hero-scroll {
+    display: none;
+  }
+  .hero-description {
+    margin-bottom: var(--spacing-lg);
   }
 }

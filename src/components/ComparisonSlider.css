@@ -115,3 +115,14 @@
     height: 240px;
   }
 }
+
+@media (max-width: 400px) {
+  .comparison-slider {
+    height: 200px;
+  }
+
+  .comparison-label {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+}

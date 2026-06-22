@@ -85,6 +85,13 @@
   transform: translateY(0);
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .portfolio-overlay-action {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 900px) {
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import './GooeyNav.css'
 
 const NAV_ITEMS = [
@@ -15,6 +15,15 @@ export default function GooeyNav() {
 
   const toggle = useCallback(() => setIsOpen((prev) => !prev), [])
   const close = useCallback(() => setIsOpen(false), [])
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handler = (e) => {
+      if (e.key === 'Escape') close()
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [isOpen, close])
 
   return (
     <>
@@ -34,7 +43,9 @@ export default function GooeyNav() {
       </svg>
 
       <nav className={`gooey-nav ${isOpen ? 'open' : ''}`}>
-        <button className="gooey-toggle" onClick={toggle} aria-label="Toggle navigation">
+        <div className={`gooey-backdrop ${isOpen ? 'visible' : ''}`} onClick={close} aria-hidden="true" />
+
+        <button className="gooey-toggle" onClick={toggle} aria-label="Toggle navigation" aria-expanded={isOpen}>
           <span className="toggle-line" />
           <span className="toggle-line" />
           <span className="toggle-line" />
@@ -43,7 +54,7 @@ export default function GooeyNav() {
         <ul className="gooey-menu" onClick={close}>
           {NAV_ITEMS.map((item) => (
             <li key={item.href} className="gooey-item">
-              <a href={item.href} className="gooey-link">
+              <a href={item.href} className="gooey-link" onClick={close}>
                 {item.label}
               </a>
             </li>

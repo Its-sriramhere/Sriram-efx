@@ -43,4 +43,24 @@
   font-weight: 600;
   color: var(--color-text);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+@media (max-width: 480px) {
+  .skill-badge {
+    padding: 0.5rem 1rem;
+  }
+
+  .skill-icon {
+    width: 28px;
+    height: 28px;
+    font-size: var(--font-size-xs);
+  }
+
+  .skill-name {
+    font-size: var(--font-size-xs);
+    max-width: 80px;
+  }
 }
