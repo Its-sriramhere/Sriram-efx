@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <span className="footer-logo gradient-text">Sriramfx</span>
+            <span className="footer-logo gradient-text">Sriramefx</span>
             <p className="footer-tagline">
-              Video Editor &bull; UI/UX Designer &bull; Motion Graphics
+              Video Editor &bull; UI/UX Designer &bull; Poster Designer
             </p>
           </div>
           <p className="footer-copyright">

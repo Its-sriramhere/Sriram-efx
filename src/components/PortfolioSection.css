@@ -1,5 +1,5 @@
 .portfolio {
-  background: var(--color-bg-alt);
+  background: rgba(17, 17, 17, 0.85);
   position: relative;
 }
 
@@ -9,6 +9,8 @@
   flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .filter-btn {
@@ -21,6 +23,7 @@
   font-size: var(--font-size-sm);
   font-weight: 500;
   transition: var(--transition-fast);
+  cursor: pointer;
 }
 
 .filter-btn:hover {
@@ -34,72 +37,17 @@
   border-color: transparent;
 }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-xl);
+.portfolio-gallery-wrap {
+  width: 100%;
 }
 
-.portfolio-overlay-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--spacing-lg);
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-  border-radius: 0 0 15px 15px;
-}
-
-.portfolio-overlay-category {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-accent-cyan);
-  margin-bottom: 2px;
-}
-
-.portfolio-overlay-title {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0 0 4px;
-}
-
-.portfolio-overlay-action {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--color-accent-cyan);
-  opacity: 0;
-  transform: translateY(5px);
-  transition: var(--transition-base);
-  display: inline-block;
-}
-
-.tilted-card-figure:hover .portfolio-overlay-action {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .portfolio-overlay-action {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 768px) {
+  .portfolio-filters {
+    gap: 0.4rem;
   }
-}
 
-@media (max-width: 900px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
+  .filter-btn {
+    padding: 0.4rem 0.9rem;
+    font-size: var(--font-size-xs);
   }
 }

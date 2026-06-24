@@ -39,7 +39,12 @@ export default function AboutSection() {
           </div>
 
           <div className="about-visual reveal">
-            <ComparisonSlider />
+            <ComparisonSlider
+              beforeSrc="/images/img-before.png"
+              afterSrc="/images/img-after.png"
+              beforeLabel="Raw"
+              afterLabel="Final"
+            />
           </div>
         </div>
       </div>

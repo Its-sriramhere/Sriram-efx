@@ -5,12 +5,22 @@ import './ContactSection.css'
 const SOCIAL_LINKS = [
   {
     name: 'Instagram',
-    url: '#',
+    url: 'https://www.instagram.com/its.sriramhere',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="1.5"/>
         <circle cx="10" cy="10" r="4" stroke="currentColor" strokeWidth="1.5"/>
         <circle cx="15.5" cy="4.5" r="1" fill="currentColor"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/sriram-sundaram-801b51410',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M6 9v5M6 6v.01M9 14v-4.5c0-1 .8-1.5 1.5-1.5s1.5.5 1.5 1.5V14M14 14v-3a2 2 0 00-2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -21,16 +31,6 @@ const SOCIAL_LINKS = [
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <rect x="2" y="5" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M9 8l4 2-4 2V8z" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    name: 'LinkedIn',
-    url: '#',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <path d="M6 9v5M6 6v.01M9 14v-4.5c0-1 .8-1.5 1.5-1.5s1.5.5 1.5 1.5V14M14 14v-3a2 2 0 00-2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },

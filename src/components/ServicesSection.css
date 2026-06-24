@@ -1,5 +1,6 @@
 .services {
   position: relative;
+  background: rgba(10, 10, 10, 0.85);
 }
 
 .section-header {

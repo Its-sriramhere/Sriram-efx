@@ -1,6 +1,4 @@
 import { useMemo } from 'react'
-import Hyperspeed from './Hyperspeed'
-import { hyperspeedPresets } from './hyperspeedPresets'
 import TiltedCard from './TiltedCard'
 import './HeroSection.css'
 
@@ -9,7 +7,6 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="hero">
-      <Hyperspeed effectOptions={hyperspeedPresets.one} />
       <div className="hero-overlay" />
 
       <div className="hero-content">
@@ -22,10 +19,10 @@ export default function HeroSection() {
           <TiltedCard
             imageSrc="/profile.png"
             altText="Sriram Sundaram"
-            containerHeight="140px"
-            containerWidth="140px"
-            imageHeight="140px"
-            imageWidth="140px"
+            containerHeight="170px"
+            containerWidth="170px"
+            imageHeight="170px"
+            imageWidth="170px"
             rotateAmplitude={8}
             scaleOnHover={1.08}
             showMobileWarning={false}

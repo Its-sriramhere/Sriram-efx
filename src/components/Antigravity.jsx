@@ -10,12 +10,12 @@ class FloatItem {
     this.y = 0
     this.vx = 0
     this.vy = 0
-    this.amplitudeX = 2 + Math.random() * 8
-    this.amplitudeY = 2 + Math.random() * 6
     this.phaseX = Math.random() * Math.PI * 2
     this.phaseY = Math.random() * Math.PI * 2
-    this.speedX = 0.3 + Math.random() * 0.5
-    this.speedY = 0.2 + Math.random() * 0.4
+    this.scatterSpeedX = 0.5 + Math.random() * 0.8
+    this.scatterSpeedY = 0.4 + Math.random() * 0.7
+    this.scatterRadX = 25 + Math.random() * 25
+    this.scatterRadY = 20 + Math.random() * 20
     this.time = Math.random() * 100
   }
 
@@ -26,28 +26,23 @@ class FloatItem {
     this.y = y
   }
 
-  update(time, mouseX, mouseY, isHovering) {
+  update(time, isHovering) {
     this.time += 0.016
 
-    const floatX = Math.sin(this.time * this.speedX + this.phaseX) * this.amplitudeX
-    const floatY = Math.cos(this.time * this.speedY + this.phaseY) * this.amplitudeY
+    let targetX = this.originX
+    let targetY = this.originY
 
-    let targetX = this.originX + floatX
-    let targetY = this.originY + floatY
-
-    if (isHovering && mouseX !== null && mouseY !== null) {
-      const dx = this.x - mouseX
-      const dy = this.y - mouseY
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      if (dist < 120) {
-        const force = (120 - dist) / 120 * 1.5
-        targetX += dx * force * 0.1
-        targetY += dy * force * 0.1
-      }
+    if (isHovering) {
+      targetX += Math.sin(this.time * this.scatterSpeedX + this.phaseX) * this.scatterRadX
+      targetY += Math.cos(this.time * this.scatterSpeedY + this.phaseY) * this.scatterRadY
+    } else {
+      targetX += Math.sin(this.time * 0.2 + this.phaseX) * 1
+      targetY += Math.cos(this.time * 0.2 + this.phaseY) * 1
     }
 
-    this.vx += (targetX - this.x) * 0.05
-    this.vy += (targetY - this.y) * 0.05
+    const damping = isHovering ? 0.06 : 0.1
+    this.vx += (targetX - this.x) * damping
+    this.vy += (targetY - this.y) * damping
     this.vx *= 0.85
     this.vy *= 0.85
     this.x += this.vx
@@ -60,7 +55,7 @@ class FloatItem {
 export default function Antigravity({ children, className = '' }) {
   const containerRef = useRef(null)
   const itemsRef = useRef([])
-  const mouseRef = useRef({ x: null, y: null, hovering: false })
+  const hoveringRef = useRef(false)
   const rafRef = useRef(null)
 
   const init = useCallback(() => {
@@ -81,9 +76,7 @@ export default function Antigravity({ children, className = '' }) {
     itemsRef.current.forEach((item) => {
       item.update(
         performance.now() / 1000,
-        mouseRef.current.x,
-        mouseRef.current.y,
-        mouseRef.current.hovering
+        hoveringRef.current
       )
     })
     rafRef.current = requestAnimationFrame(animate)
@@ -101,22 +94,14 @@ export default function Antigravity({ children, className = '' }) {
     })
     resizeObserver.observe(container)
 
-    const handleMouseMove = (e) => {
-      const rect = container.getBoundingClientRect()
-      mouseRef.current.x = e.clientX - rect.left
-      mouseRef.current.y = e.clientY - rect.top
-    }
+    const handleMouseEnter = () => { hoveringRef.current = true }
+    const handleMouseLeave = () => { hoveringRef.current = false }
 
-    const handleMouseEnter = () => { mouseRef.current.hovering = true }
-    const handleMouseLeave = () => { mouseRef.current.hovering = false }
-
-    container.addEventListener('mousemove', handleMouseMove)
     container.addEventListener('mouseenter', handleMouseEnter)
     container.addEventListener('mouseleave', handleMouseLeave)
 
     return () => {
       resizeObserver.disconnect()
-      container.removeEventListener('mousemove', handleMouseMove)
       container.removeEventListener('mouseenter', handleMouseEnter)
       container.removeEventListener('mouseleave', handleMouseLeave)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)

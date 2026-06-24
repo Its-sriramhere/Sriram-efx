@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import LaserFlow from './LaserFlow'
 import './WelcomeOverlay.css'
 
 export default function WelcomeOverlay() {
@@ -20,6 +21,14 @@ export default function WelcomeOverlay() {
 
   return (
     <div className={`welcome-overlay ${phase}`}>
+      <div className="welcome-overlay-bg">
+        <LaserFlow
+          falloffStart={2.84}
+          fogIntensity={1}
+          horizontalBeamOffset={0}
+          verticalBeamOffset={0}
+        />
+      </div>
       <div className="welcome-content">
         <h1 className="welcome-title">
           Welcome to the world of

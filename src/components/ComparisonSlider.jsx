@@ -1,7 +1,12 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import './ComparisonSlider.css'
 
-export default function ComparisonSlider({ beforeLabel = 'Before', afterLabel = 'After' }) {
+export default function ComparisonSlider({
+  beforeSrc = '/images/img-before.png',
+  afterSrc = '/images/img-after.png',
+  beforeLabel = 'Raw',
+  afterLabel = 'Final',
+}) {
   const [position, setPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
   const containerRef = useRef(null)
@@ -52,14 +57,14 @@ export default function ComparisonSlider({ beforeLabel = 'Before', afterLabel = 
       aria-label="Before and after comparison"
       aria-valuenow={Math.round(position)}
     >
-      <div className="comparison-after" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-        <div className="comparison-gradient vibrant" />
-        <span className="comparison-label after">{afterLabel}</span>
+      <div className="comparison-before">
+        <div className="comparison-image" style={{ backgroundImage: `url(${beforeSrc})` }} />
+        <span className="comparison-label before">{beforeLabel}</span>
       </div>
 
-      <div className="comparison-before">
-        <div className="comparison-gradient dull" />
-        <span className="comparison-label before">{beforeLabel}</span>
+      <div className="comparison-after" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
+        <div className="comparison-image" style={{ backgroundImage: `url(${afterSrc})` }} />
+        <span className="comparison-label after">{afterLabel}</span>
       </div>
 
       <div className="comparison-handle" style={{ left: `${position}%` }}>

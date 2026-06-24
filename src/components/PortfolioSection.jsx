@@ -1,82 +1,38 @@
 import { useState, useMemo } from 'react'
-import TiltedCard from './TiltedCard'
+import CircularGallery from './CircularGallery'
 import './PortfolioSection.css'
 
-const CATEGORIES = ['All', 'Reels', 'Commercial Ads', 'Corporate', 'Event', 'Poster Designing']
+const CATEGORIES = ['All', 'Reels', 'Commercial Ads', 'Event Promotion']
 
 const PROJECTS = [
-  {
-    title: 'Brand Film — Lumin',
-    category: 'Commercial Ads',
-    gradient: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)',
-  },
-  {
-    title: 'Tech Reel Compilation',
-    category: 'Reels',
-    gradient: 'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)',
-  },
-  {
-    title: 'Corporate Annual Meet',
-    category: 'Corporate',
-    gradient: 'linear-gradient(135deg, #232526, #414345)',
-  },
-  {
-    title: 'Wedding Highlights',
-    category: 'Event',
-    gradient: 'linear-gradient(135deg, #2d1b69, #55286f, #7b2d8e)',
-  },
-  {
-    title: 'Product Launch — Nova',
-    category: 'Commercial Ads',
-    gradient: 'linear-gradient(135deg, #0d0d0d, #1a1a2e)',
-  },
-  {
-    title: 'Poster Series — Abstract',
-    category: 'Poster Designing',
-    gradient: 'linear-gradient(135deg, #000428, #004e92)',
-  },
-  {
-    title: 'Fitness Ad Campaign',
-    category: 'Reels',
-    gradient: 'linear-gradient(135deg, #1f1c2c, #928dab)',
-  },
-  {
-    title: 'Documentary Short',
-    category: 'Corporate',
-    gradient: 'linear-gradient(135deg, #0d0d0d, #3a3a3a)',
-  },
-  {
-    title: 'Festival Posters',
-    category: 'Poster Designing',
-    gradient: 'linear-gradient(135deg, #0a0a0a, #3a1c71, #d76d77)',
-  },
+  { key: 'highlight-reel', title: 'Highlight Reel', category: 'Reels', video: '/videos/OAOZ1135.mp4' },
+  { key: 'reel-compilation', title: 'Reel Compilation', category: 'Reels', video: '/videos/JTVF2442.mp4' },
+  { key: 'event-reel', title: 'Event Reel', category: 'Reels', video: '/videos/LBGT2910.mp4' },
+  { key: 'product-launch', title: 'Product Launch — Nova', category: 'Reels', video: '/videos/PIAP0680.mp4' },
+  { key: 'social-content', title: 'Social Content Reel', category: 'Reels', video: '/videos/RTAM6777.mp4' },
+  { key: 'cinematic-reel', title: 'Cinematic Reel', category: 'Reels', video: '/videos/NZLU9756.mp4' },
+  { key: 'doc-short', title: 'Documentary Short', category: 'Reels', video: '/videos/UTGF7047.mp4' },
+  { key: 'img-6578', category: 'Reels', video: '/videos/img-6578.mp4' },
+  { key: 'img-6982', category: 'Reels', video: '/videos/img-6982.mp4' },
+  { key: 'img-9373', category: 'Reels', video: '/videos/img-9373.mp4' },
+  { key: 'img-9434', category: 'Reels', video: '/videos/img-9434.mp4' },
+  { key: 'brand-film-aura', title: 'Brand Film — Aura', category: 'Commercial Ads', video: '/videos/img-6511.mp4' },
+  { key: 'brand-film-lumin', title: 'Brand Film — Lumin', category: 'Commercial Ads', video: '/videos/img-9680.mp4' },
+  { key: 'event-promotion', title: 'Event Promotion', category: 'Event Promotion', video: '/videos/img-6523.mp4' },
 ]
-
-function gradientToDataUri(gradient) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280">
-    <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      ${gradient
-        .replace('linear-gradient(135deg, ', '')
-        .replace(')', '')
-        .split(',')
-        .map((c, i) => `<stop offset="${i * 50}%" stop-color="${c.trim()}"/>`)
-        .join('')}
-    </linearGradient></defs>
-    <rect width="400" height="280" fill="url(#g)"/>
-  </svg>`
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`
-}
 
 export default function PortfolioSection() {
   const [activeCategory, setActiveCategory] = useState('All')
 
-  const filteredProjects = useMemo(
-    () =>
-      activeCategory === 'All'
-        ? PROJECTS
-        : PROJECTS.filter((p) => p.category === activeCategory),
-    [activeCategory]
-  )
+  const galleryItems = useMemo(() => {
+    const filtered = activeCategory === 'All'
+      ? PROJECTS
+      : PROJECTS.filter(p => p.category === activeCategory)
+    return filtered.map(p => ({
+      image: p.video,
+      text: p.title || '',
+    }))
+  }, [activeCategory])
 
   return (
     <section id="portfolio" className="section portfolio">
@@ -101,31 +57,18 @@ export default function PortfolioSection() {
           ))}
         </div>
 
-        <div key={activeCategory} className="portfolio-grid">
-          {filteredProjects.map((project, index) => (
-            <div key={project.title} className="reveal" style={{ animationDelay: `${index * 0.08}s` }}>
-              <TiltedCard
-                imageSrc={gradientToDataUri(project.gradient)}
-                altText={project.title}
-                containerHeight="280px"
-                containerWidth="100%"
-                imageHeight="280px"
-                imageWidth="400px"
-                rotateAmplitude={12}
-                scaleOnHover={1.05}
-                showMobileWarning={false}
-                showTooltip={false}
-                displayOverlayContent
-                overlayContent={
-                  <div className="portfolio-overlay-content">
-                    <span className="portfolio-overlay-category">{project.category}</span>
-                    <h3 className="portfolio-overlay-title">{project.title}</h3>
-                    <span className="portfolio-overlay-action">View Project →</span>
-                  </div>
-                }
-              />
-            </div>
-          ))}
+        <div key={activeCategory} className="portfolio-gallery-wrap reveal">
+          <div style={{ height: '600px', position: 'relative' }}>
+            <CircularGallery
+              items={galleryItems}
+              bend={1}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.05}
+              font="bold 30px Space Grotesk"
+              scrollSpeed={2}
+            />
+          </div>
         </div>
       </div>
     </section>

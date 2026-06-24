@@ -356,7 +356,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         const initW = Math.max(1, container.offsetWidth);
         const initH = Math.max(1, container.offsetHeight);
 
-        const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        this.isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         this.renderer = new THREE.WebGLRenderer({
           antialias: false,
           alpha: true,
@@ -448,14 +448,14 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           new BloomEffect({
             luminanceThreshold: 0.2,
             luminanceSmoothing: 0,
-            resolutionScale: isMobile ? 0.5 : 1
+            resolutionScale: this.isMobile ? 0.5 : 1
           })
         );
 
         const smaaPass = new EffectPass(
           this.camera,
           new SMAAEffect({
-            preset: isMobile ? SMAAPreset.LOW : SMAAPreset.MEDIUM,
+            preset: this.isMobile ? SMAAPreset.LOW : SMAAPreset.MEDIUM,
             searchImage: SMAAEffect.searchImageDataURL,
             areaImage: SMAAEffect.areaImageDataURL
           })
