@@ -12,7 +12,6 @@ dist
 dist-ssr
 *.local
 .env
-public/videos/*.mp4
 
 # Editor directories and files
 .vscode/*
@@ -24,3 +23,5 @@ public/videos/*.mp4
 *.njsproj
 *.sln
 *.sw?
+.vercel
+.env*

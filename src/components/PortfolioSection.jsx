@@ -5,20 +5,20 @@ import './PortfolioSection.css'
 const CATEGORIES = ['All', 'Reels', 'Commercial Ads', 'Event Promotion']
 
 const PROJECTS = [
-  { key: 'highlight-reel', title: 'Highlight Reel', category: 'Reels', video: '/videos/OAOZ1135.mp4' },
-  { key: 'reel-compilation', title: 'Reel Compilation', category: 'Reels', video: '/videos/JTVF2442.mp4' },
-  { key: 'event-reel', title: 'Event Reel', category: 'Reels', video: '/videos/LBGT2910.mp4' },
-  { key: 'product-launch', title: 'Product Launch — Nova', category: 'Reels', video: '/videos/PIAP0680.mp4' },
-  { key: 'social-content', title: 'Social Content Reel', category: 'Reels', video: '/videos/RTAM6777.mp4' },
-  { key: 'cinematic-reel', title: 'Cinematic Reel', category: 'Reels', video: '/videos/NZLU9756.mp4' },
-  { key: 'doc-short', title: 'Documentary Short', category: 'Reels', video: '/videos/UTGF7047.mp4' },
-  { key: 'img-6578', category: 'Reels', video: '/videos/img-6578.mp4' },
-  { key: 'img-6982', category: 'Reels', video: '/videos/img-6982.mp4' },
-  { key: 'img-9373', category: 'Reels', video: '/videos/img-9373.mp4' },
-  { key: 'img-9434', category: 'Reels', video: '/videos/img-9434.mp4' },
-  { key: 'brand-film-aura', title: 'Brand Film — Aura', category: 'Commercial Ads', video: '/videos/img-6511.mp4' },
-  { key: 'brand-film-lumin', title: 'Brand Film — Lumin', category: 'Commercial Ads', video: '/videos/img-9680.mp4' },
-  { key: 'event-promotion', title: 'Event Promotion', category: 'Event Promotion', video: '/videos/img-6523.mp4' },
+  { key: 'highlight-reel', title: 'Highlight Reel', category: 'Reels', image: '/thumbnails/OAOZ1135.jpg' },
+  { key: 'reel-compilation', title: 'Reel Compilation', category: 'Reels', image: '/thumbnails/JTVF2442.jpg' },
+  { key: 'event-reel', title: 'Event Reel', category: 'Reels', image: '/thumbnails/LBGT2910.jpg' },
+  { key: 'product-launch', title: 'Product Launch — Nova', category: 'Reels', image: '/thumbnails/PIAP0680.jpg' },
+  { key: 'social-content', title: 'Social Content Reel', category: 'Reels', image: '/thumbnails/RTAM6777.jpg' },
+  { key: 'cinematic-reel', title: 'Cinematic Reel', category: 'Reels', image: '/thumbnails/NZLU9756.jpg' },
+  { key: 'doc-short', title: 'Documentary Short', category: 'Reels', image: '/thumbnails/UTGF7047.jpg' },
+  { key: 'img-6578', category: 'Reels', image: '/thumbnails/img-6578.jpg' },
+  { key: 'img-6982', category: 'Reels', image: '/thumbnails/img-6982.jpg' },
+  { key: 'img-9373', category: 'Reels', image: '/thumbnails/img-9373.jpg' },
+  { key: 'img-9434', category: 'Reels', image: '/thumbnails/img-9434.jpg' },
+  { key: 'brand-film-aura', title: 'Brand Film — Aura', category: 'Commercial Ads', image: '/thumbnails/img-6511.jpg' },
+  { key: 'brand-film-lumin', title: 'Brand Film — Lumin', category: 'Commercial Ads', image: '/thumbnails/img-9680.jpg' },
+  { key: 'event-promotion', title: 'Event Promotion', category: 'Event Promotion', image: '/thumbnails/img-6523.jpg' },
 ]
 
 export default function PortfolioSection() {
@@ -29,7 +29,7 @@ export default function PortfolioSection() {
       ? PROJECTS
       : PROJECTS.filter(p => p.category === activeCategory)
     return filtered.map(p => ({
-      image: p.video,
+      image: p.image,
       text: p.title || '',
     }))
   }, [activeCategory])
