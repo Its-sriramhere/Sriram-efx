@@ -288,6 +288,13 @@ input, textarea, select {
   transform: translateY(0);
 }
 
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

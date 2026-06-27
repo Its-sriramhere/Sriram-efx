@@ -24,6 +24,7 @@
 }
 
 .footer-copyright {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  color: #999999;
+  opacity: 0.9;
 }

@@ -1167,9 +1167,14 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
     };
     options.distortion = distortions[options.distortion];
 
-    const myApp = new App(container, options);
-    appRef.current = myApp;
-    myApp.loadAssets().then(myApp.init);
+    try {
+      const myApp = new App(container, options);
+      appRef.current = myApp;
+      myApp.loadAssets().then(myApp.init);
+    } catch (e) {
+      console.warn('Hyperspeed: WebGL not available, skipping 3D background.');
+      appRef.current = null;
+    }
 
     return () => {
       if (appRef.current) {
