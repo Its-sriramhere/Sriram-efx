@@ -18,7 +18,6 @@ const PROJECTS = [
   { key: 'img-9373', category: 'Reels', video: '/videos/img-9373.mp4', poster: '/thumbnails/img-9373.jpg' },
   { key: 'img-9434', category: 'Reels', video: '/videos/img-9434.mp4', poster: '/thumbnails/img-9434.jpg' },
   { key: 'brand-film-aura', title: 'Brand Film — Aura', category: 'Commercial Ads', video: '/videos/img-6511.mp4', poster: '/thumbnails/img-6511.jpg' },
-  { key: 'brand-film-lumin', title: 'Brand Film — Lumin', category: 'Commercial Ads', video: '/videos/img-9680.mp4', poster: '/thumbnails/img-9680.jpg' },
   { key: 'event-promotion', title: 'Event Promotion', category: 'Event Promotion', video: '/videos/img-6523.mp4', poster: '/thumbnails/img-6523.jpg' },
 ]
 
